@@ -31,22 +31,40 @@
     // 🧠 There are many ways to solve this, but practice using a for loop to iterate over the array.
     // 🧠 As you have done in the past, declare a variable before you start looping, to accumulate the result.
     function sumNumsFor(nums) {
-      if (nums.length === 0) {
-        return 0
-      }
-      let totalSum = 0;
-      let tempSum = 0;
-      for (let i = 0; i < nums.length ; i++) {
-        if (typeof nums[i] === "number") {
-        tempSum = totalSum + nums[i]
-        totalSum = tempSum
-        } 
-      if (nums[i] === 13) {
-          return "I'm too superstitious!"
+
+// ----- 2nd Attempt ----------------
+      let resultChl1=0;
+        for (let idxChl1=0; idxChl1 < nums.length; idxChl1++) {
+          let element = nums[idxChl1]
+          if (typeof element === "number") {
+              if (element === 13) {
+                return "I'm too superstitious!"
+              }
+            resultChl1 += element;
+          }
         }
-      }
-      return totalSum
+      return resultChl1
+// ----- 2nd Attempt ----------------
+
+// ----- 1st Attempt ----------------  
+    //   if (nums.length === 0) {
+    //     return 0
+    //   }
+    //   let totalSum = 0;
+    //   let tempSum = 0;
+    //   for (let i = 0; i < nums.length ; i++) {
+    //     if (typeof nums[i] === "number") {
+    //     tempSum = totalSum + nums[i]
+    //     totalSum = tempSum
+    //     } 
+    //   if (nums[i] === 13) {         
+    //       return "I'm too superstitious!"
+    //     }
+    //   }
+    //   return totalSum
+// ----- 1st Attempt ----------------  
     }
+
 
     // 👉 CHALLENGE 2
     // 🧠 The function stripVowels takes a string, strips all lowcase vowel letters (a,e,i,o,u) from it and returns it.
@@ -55,24 +73,41 @@
     // ❗ Notes:
     // 🧠 There are many ways to solve this, but practice using a for loop to iterate over the characters of the string.
     function stripVowels(str) {
-      let finalString="";
-      let tempArr=[];
-      for (let i = 0; i < str.length ; i++) {
-        if (str[i] === "a" ||
-            str[i] === "e" ||
-            str[i] === "i" ||
-            str[i] === "o" ||
-            str[i] === "u" ) {
-            } else {
-              tempArr.push(str[i])
-              finalString = tempArr.join("")
+
+// ----- 2nd Attempt ---------------- 
+      let resultChl2=[];
+      let wordChl2 = str.split("");
+        for (idxChl2=0; idxChl2 < wordChl2.length; idxChl2++) {
+          let aplhabet = wordChl2[idxChl2];
+            if (aplhabet !== "a" && aplhabet !== "e" && aplhabet !== "i" && aplhabet !== "o" && aplhabet !== "u") {
+              resultChl2.push(aplhabet)
+            }
         }
-      }
-      if (finalString.length > 0) {
-        return finalString;
-      } else {
-        return ""
-      }
+      return resultChl2.join("");
+
+// ----- 2nd Attempt ---------------- 
+
+// ----- 1st Attempt ----------------      
+      // let finalString="";
+      // let tempArr=[];
+      // for (let i = 0; i < str.length ; i++) {
+      //   if (str[i] === "a" ||
+      //       str[i] === "e" ||
+      //       str[i] === "i" ||
+      //       str[i] === "o" ||
+      //       str[i] === "u" ) {
+      //       } else {
+      //         tempArr.push(str[i])
+      //         finalString = tempArr.join("")
+      //   }
+      // }
+      // if (finalString.length > 0) {
+      //   return finalString;
+      // } else {
+      //   return ""
+      // }
+// ----- 1st Attempt ---------------- 
+
     }
 
     // 👉 CHALLENGE 3
@@ -81,23 +116,41 @@
     // sumNumsWhile([1, 2, 3]) // should return 6
     // sumNumsWhile([1, 2, 13]) // should return "I'm too superstitious!"
     function sumNumsWhile(nums) {
-      if (nums.length === 0) {
-        return 0
-      }
-      let totalSum = 0;
-      let tempSum = 0;
-      let index = 0;
-      while (index < nums.length) {
-        if (typeof nums[index] === "number") {
-        tempSum = totalSum + nums[index]
-        totalSum = tempSum
-        }         
-        if (nums[index] === 13) {
-          return "I'm too superstitious!"
+// ----- 2nd Attempt ----------------
+      let resultChl3=0;
+      let idxChl3=0;
+      while (idxChl3 < nums.length) {
+        let element= nums[idxChl3] 
+        if (typeof element === "number") {
+            if (element === 13) {
+              return "I'm too superstitious!"
+            }
+          resultChl3 += element
         }
-        index++ ;
+        idxChl3++
       }
-      return totalSum
+      return resultChl3
+
+// ----- 2nd Attempt ----------------
+// ----- 1st Attempt ----------------
+      // if (nums.length === 0) {
+      //   return 0
+      // }
+      // let totalSum = 0;
+      // let tempSum = 0;
+      // let index = 0;
+      // while (index < nums.length) {
+      //   if (typeof nums[index] === "number") {
+      //   tempSum = totalSum + nums[index]
+      //   totalSum = tempSum
+      //   }         
+      //   if (nums[index] === 13) {
+      //     return "I'm too superstitious!"
+      //   }
+      //   index++ ;
+      // }
+      // return totalSum
+// ----- 1st Attempt ----------------
     }
 
     // 👉 CHALLENGE 4
@@ -118,28 +171,43 @@
     // 🧠 Work out using pen and paper how the round number and the lifePoints change after each round.
     // 🧠 As long as there are lifePoints, decrease lifePoints by round number, and increase round number by one.
     function fightMonsters(lifePoints) {
-      let roundIndex = 1;
-      let pointsNextRound = 0;
-      let eligibleForNextRound = true;
-      let pointsRemaining= 0;
-      while (roundIndex > 0 && eligibleForNextRound) {
-        if (roundIndex === 1) {
-          pointsNextRound = lifePoints - roundIndex;
-        } else {
-          pointsNextRound = pointsRemaining - roundIndex;
+
+    // ----- 2nd Attempt ----------------
+      let round = 1;
+      while (lifePoints > 0) {
+        lifePoints -= round
+        if (lifePoints <= 0) {
+          return `You died in round ${round}`
         }
-        pointsRemaining = pointsNextRound
-        if (pointsNextRound <= 0) {
-          eligibleForNextRound = false ;
-          return "You died in round " + roundIndex
-        }
-      roundIndex++
-      // if the loop breaks the program
-        if (roundIndex > lifePoints) {
-          eligibleForNextRound = false;
-          break
-        }
+        round++
       }
+    // ----- 2nd Attempt ----------------
+
+    // ----- 1st Attempt ----------------
+      // let roundIndex = 1;
+      // let pointsNextRound = 0;
+      // let eligibleForNextRound = true;
+      // let pointsRemaining= 0;
+      // while (roundIndex > 0 && eligibleForNextRound) {
+      //   if (roundIndex === 1) {
+      //     pointsNextRound = lifePoints - roundIndex;
+      //   } else {
+      //     pointsNextRound = pointsRemaining - roundIndex;
+      //   }
+      //   pointsRemaining = pointsNextRound
+      //   if (pointsNextRound <= 0) {
+      //     eligibleForNextRound = false ;
+      //     return "You died in round " + roundIndex
+      //   }
+      // roundIndex++
+      // // if the loop breaks the program
+      //   if (roundIndex > lifePoints) {
+      //     eligibleForNextRound = false;
+      //     break
+      //   }
+      // }
+    // ----- 1st Attempt ----------------
+
     }
 
     // 👉 CHALLENGE 5
@@ -151,9 +219,9 @@
     // 🧠 Use any kind of loop you'd like and the push method to populate the array of even numbers.
     function findEvenNums(arrInt) {
       let arrChl5 =[];
-      if (arrInt.length === 0) {
-        return arrChl5
-      }
+      // if (arrInt.length === 0) {
+      //   return arrChl5
+      // }
       for (let i=0; i < arrInt.length; i++ ) {
         if (arrInt[i] % 2 === 0) {
         arrChl5.push(arrInt[i]);
@@ -192,17 +260,27 @@
     // 🧠 Examples of usage:
     // headAndTail([1, 2, 3]) // should return { head: 1, tail: [2, 3] }
     function headAndTail(arrChl7) {
-      let arrTailEle = [];
-      let headString = "";
-      for (let i =0; i < arrChl7.length; i++) {
-        if (i=== 0) {
-          headString = arrChl7[i];
-        } else {
-          arrTailEle.push(arrChl7[i]);
-        }
-      }
-      let obj = {head : headString, tail : arrTailEle}
-      return obj
+
+// ----- 2nd Attempt ----------------
+      let head = arrChl7[0]
+      let tail = arrChl7.slice(1)
+      return {head, tail}
+// ----- 2nd Attempt ----------------
+
+// ----- 1st Attempt ----------------      
+      // let arrTailEle = [];
+      // let headString = "";
+      // for (let i =0; i < arrChl7.length; i++) {
+      //   if (i=== 0) {
+      //     headString = arrChl7[i];
+      //   } else {
+      //     arrTailEle.push(arrChl7[i]);
+      //   }
+      // }
+      // let obj = {head : headString, tail : arrTailEle}
+      // return obj
+// ----- 1st Attempt ----------------
+
     }
 
     // 👉 CHALLENGE 8
@@ -251,11 +329,12 @@
         arr.pop()
         return arr
       } else {
-        arr.pop()
+        // arr.pop()
         // arr.shift()
-        let newArr=[];
-        newArr= arr.slice(1, arr.length)
-        return newArr
+        // let newArr=[];
+        // newArr= arr.slice(1, arr.length-1)
+        // return newArr
+        return arr.slice(1, arr.length-1)
       }
     }
 
